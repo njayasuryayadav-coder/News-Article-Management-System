@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h3 class="text-center mb-4">
+        Welcome to the <tt>FirstPost</tt>&nbsp;&nbsp;
+        <a href="{% url 'addarticle' %}" class="btn btn-success btn-sm">Add new article</a>
+    </h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">articleName</th>
+                <th scope="col">articleContent</th>
+                <th scope="col">publishDate</th>
+                <th scope="col">authorId</th>
+                <th scope="col">action</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            {% for article in data %}
+            <tr>
+                <th scope="row">{{ article.id }}</th>
+                <td>{{ article.articleName }}</td>
+                <td>{{ article.articleContent }}</td>
+                <td>{{ article.publishDate }}</td>
+                <td>{{ article.authorId }}</td>
+                <td> 
+                    <a href="{% url 'fulldetail' article.pk %}" class="btn btn-info btn-sm">Full Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}
